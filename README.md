@@ -23,17 +23,17 @@ Protocol Buffers is a language-agnostic binary serialization format developed by
 In the context of gRPC, stubs are the client-side representations of the server's methods. When a client calls a method on the stub, it automatically handles the necessary network communication to send the request to the server and receive the response.
 
 ## Project Structure
-```bash
-calculator/ 
-│ ├── server/ 
-│ ├── server.py # Main server implementation in Python 
-  calculater/
-  └── calculator_pb2.py # Generated Protocol Buffers code for messages 
-  └── calculator_pb2_grpc.py # Generated gRPC code for the service 
-│ ├── client.py # Python client implementation
-│ ├── client.go # Go client implementation 
-│ ├── calculator.proto # Protocol Buffers definition file 
-└── README.md # Project documentation
+    
+    calculator/ 
+    │ ├── server/ 
+    │ ├── server.py # Main server implementation in Python 
+      calculater/
+      └── calculator_pb2.py # Generated Protocol Buffers code for messages 
+      └── calculator_pb2_grpc.py # Generated gRPC code for the service 
+    │ ├── client.py # Python client implementation
+    │ ├── client.go # Go client implementation 
+    │ ├── calculator.proto # Protocol Buffers definition file 
+    └── README.md # Project documentation 
 
 ### File Descriptions
 
@@ -59,27 +59,27 @@ To run the server and clients, follow these steps:
    cd calculator
 
 2. Install the required dependencies for the Python server:
-
-  pip install grpcio grpcio-tools
+    ```bash
+    pip install grpcio grpcio-tools
 
 3. For the Go client, make sure you have Go installed and set up on your machine.
 
 4. Running the Server
   To start the gRPC server, navigate to the server directory and run:
-  
-  python server.py
+    ```bash
+    python server.py
   The server will start running on port 50051.
 
 5. Running the client
   Using the Python Client
   To use the Python client, navigate to the client_python directory and run:
-  
-  python client.py
+    ```bash
+    python client.py
   This client will connect to the server and perform an addition operation.
   6. Using the Go Client
   To use the Go client, navigate to the client_go directory and run:
-
-  go run client.go
+    ```bash
+    go run client.go
   This client will also connect to the server and perform an addition operation.
 
 # Contributing
@@ -87,12 +87,6 @@ Contributions are welcome! If you have suggestions for improvements or want to a
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-### Instructions to Use the README
-
-1. **Replace `https://github.com/matoussi-roua/Grpc_calculator_server_two_client.git`**: Make sure to replace `<repository-url>` with the actual URL of your GitHub repository.
-2. **Add Any Additional Information**: Feel free to modify or expand the README based on your specific project details or requirements.
-3. **Additional Sections**: You can add sections for troubleshooting, frequently asked questions, or any other relevant information that would be helpful for users.
 
 If you need further modifications or additional sections, let me know!
 
