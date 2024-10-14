@@ -151,7 +151,7 @@ If using public IP addresses, ensure that you secure your gRPC service appropria
 Contributions are welcome! If you have suggestions for improvements or want to add features, please create a pull request.
 
 # License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [MIT License](https://github.com/matoussi-roua/Grpc_calculator_server_two_client/blob/main/LICENSE) file for details.
 
 If you need further modifications or additional sections, let me know!
 
