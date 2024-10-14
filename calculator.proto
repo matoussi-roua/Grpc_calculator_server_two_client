@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package calculator;
+
+// Le service de calcul
+service Calculator {
+  // Méthode pour additionner deux nombres
+  rpc Add (AddRequest) returns (AddResponse);
+}
+
+// Message de demande pour l'addition
+message AddRequest {
+  double a = 1; // Premier nombre
+  double b = 2; // Deuxième nombre
+}
+
+// Message de réponse pour l'addition
+message AddResponse {
+  double result = 1; // Résultat de l'addition
+}
+option go_package = "./calculator;calculator";
