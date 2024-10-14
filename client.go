@@ -6,7 +6,7 @@ import (
     "log"
     "time"
 
-    pb "calculator/calculator" // Modifiez ceci en fonction du chemin d'importation
+    pb "Grpc_calculator_server_two_client/calculator" // Modifiez ceci en fonction du chemin d'importation
     "google.golang.org/grpc"
 )
 
