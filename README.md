@@ -1,5 +1,5 @@
 # Grpc_calculator_server_two_client
-This project implements a simple calculator service using gRPC (Google Remote Procedure Call) and Protocol Buffers for efficient communication. The service allows clients to perform addition operations on two numbers.
+This project implements a simple calculator service using gRPC (Google Remote Procedure Call) and Protocol Buffers for efficient communication. The service allows clients to perform addition operations on two numbers. This project demonstrates the interoperability of gRPC, showcasing its ability to work seamlessly with different programming languages and across various machines.
 
 ## Table of Contents
 - [Definitions](#definitions)
@@ -8,6 +8,7 @@ This project implements a simple calculator service using gRPC (Google Remote Pr
 - [Running the Server](#running-the-server)
 - [Using the Python Client](#using-the-python-client)
 - [Using the Go Client](#using-the-go-client)
+- [Working on Different Machine](#working_on_different_machine)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -27,7 +28,7 @@ In the context of gRPC, stubs are the client-side representations of the server'
     calculator/ 
     │ ├── server/ 
     │ ├── server.py # Main server implementation in Python 
-      calculater/
+    └──calculater/
       └── calculator_pb2.py # Generated Protocol Buffers code for messages 
       └── calculator_pb2_grpc.py # Generated gRPC code for the service 
     │ ├── client.py # Python client implementation
@@ -53,35 +54,99 @@ In the context of gRPC, stubs are the client-side representations of the server'
 
 To run the server and clients, follow these steps:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/matoussi-roua/Grpc_calculator_server_two_client.git
-   cd calculator
+### Clone the repository:
+       
+       git clone https://github.com/matoussi-roua/Grpc_calculator_server_two_client.git
+       cd calculator
 
-2. Install the required dependencies for the Python server:
-    ```bash
-    pip install grpcio grpcio-tools
+### Install the required dependencies for the Python server:
+Install the required dependencies for the Python server:
+        
+        pip install grpcio grpcio-tools
 
-3. For the Go client, make sure you have Go installed and set up on your machine.
+### For the Go client, make sure you have Go installed and set up on your machine:
 
-4. Running the Server
+        go mod tidy
+        
+### Generate the Protocol Buffers code:
+
+Python:
+
+        python -m grpc_tools.protoc -I. --python_out=./server --grpc_python_out=./server calculator.proto
+        
+Go:
+
+        protoc --go_out=./client_go --go-grpc_out=./client_go calculator.proto
+        
+# Running the Server:
   To start the gRPC server, navigate to the server directory and run:
-    ```bash
-    python server.py
+  
+        
+        python server.py
+        
   The server will start running on port 50051.
 
-5. Running the client
-  Using the Python Client
-  To use the Python client, navigate to the client_python directory and run:
-    ```bash
-    python client.py
-  This client will connect to the server and perform an addition operation.
-  6. Using the Go Client
-  To use the Go client, navigate to the client_go directory and run:
-    ```bash
-    go run client.go
-  This client will also connect to the server and perform an addition operation.
+# using the python client:
 
+  To use the Python client, navigate to the client_python directory and run:
+  
+        
+        python client.py
+        
+  This client will connect to the server and perform an addition operation.
+  
+# using the go client:
+
+  To use the Go client, navigate to the client_go directory and run:
+  
+        
+        go run client.go
+        
+  This client will also connect to the server and perform an addition operation.
+  
+# working on different machine
+
+Start the server on machine 1, To allow clients on different machines to connect to the server, you need the IP address of the server machine.
+On the server machine, run:
+        
+        ipconfig  # On Windows
+        ifconfig  # On Linux/Mac
+        
+## Python Client:
+If you're using the Python client:
+
+Install dependencies:
+
+        pip install grpcio
+        
+Edit the client.py file:
+
+        // Update the server address to the server machine's IP address:
+        with grpc.insecure_channel('192.168.1.100:50051') as channel:
+        
+Run the client:
+
+        python client.py
+        
+## Go Client:
+If you're using the Go client:
+
+Make sure Go is installed.
+Edit the client.go file:
+
+        // Update the server address to the server machine's IP address:
+        conn, err := grpc.Dial("192.168.1.100:50051", grpc.WithInsecure())
+        
+Run the Go client:
+
+        go run client.go
+        
+Testing the Setup: When the server is running on one machine and the clients are running on different machines, the clients should successfully connect to the server and receive responses for addition operations.
+
+## Notes on Networking
+Ensure that the server machine's firewall allows inbound connections on port 50051. You may need to add a firewall rule to allow traffic through this port.
+The machines must be on the same network (local network) or have proper routing if on different networks (e.g., using VPN or public IPs).
+If using public IP addresses, ensure that you secure your gRPC service appropriately.
 # Contributing
 Contributions are welcome! If you have suggestions for improvements or want to add features, please create a pull request.
 
